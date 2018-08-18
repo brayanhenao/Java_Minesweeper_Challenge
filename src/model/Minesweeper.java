@@ -142,7 +142,7 @@ public class Minesweeper implements IGraph<Box>, IMinesweeperGame {
                 int adjacentXCoordinate = adjacentBox.getXCoordinate();
                 int adjacentYCoordinate = adjacentBox.getYCoordinate();
 
-                if (validateBSFCondition(adjacentXCoordinate, adjacentYCoordinate)) {
+                if (validateBSFCondition(xCoordinate, yCoordinate)) {
                     gameBoard[adjacentXCoordinate][adjacentYCoordinate].visitBox();
                     if (gameBoard[adjacentXCoordinate][adjacentYCoordinate].getMinesAround() == 0) {
                         ((LinkedList<Box>) queue).push(adjacentBox);
@@ -260,7 +260,13 @@ public class Minesweeper implements IGraph<Box>, IMinesweeperGame {
         printBoard(gameBoard, true);
     }
 
-
+    /**
+     * Method that validates the breadth first search traversal condition (if the current box doesn't have any mines
+     * around, it should visit all the boxes around).
+     *
+     * @param xCoordinate - the x coordinate of the current box.
+     * @param yCoordinate - the y coordinate of the current box.
+     */
     private boolean validateBSFCondition(int xCoordinate, int yCoordinate) {
         return !gameBoard[xCoordinate][yCoordinate].isVisited() && !gameBoard[xCoordinate][yCoordinate].isMine() && !gameBoard[xCoordinate][yCoordinate].isFlag();
     }
