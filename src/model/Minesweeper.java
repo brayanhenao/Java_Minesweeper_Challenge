@@ -11,7 +11,6 @@ package model;
 import exceptions.WrongInputException;
 import interfaces.IGraph;
 import interfaces.IMinesweeperGame;
-import interfaces.INode;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -83,40 +82,40 @@ public class Minesweeper implements IGraph<Box>, IMinesweeperGame {
         int xCoordinate = node.getXCoordinate();
         int yCoordinate = node.getYCoordinate();
         if (xCoordinate > 0) {
-            node.addAdjacentNode(gameBoard[xCoordinate - 1][yCoordinate]);
+            node.addAdjacentBox(gameBoard[xCoordinate - 1][yCoordinate]);
         }
         // LEFT
         if (yCoordinate > 0) {
-            node.addAdjacentNode(gameBoard[xCoordinate][yCoordinate - 1]);
+            node.addAdjacentBox(gameBoard[xCoordinate][yCoordinate - 1]);
         }
         // BOTTOM
         if (xCoordinate < (rows - 1)) {
-            node.addAdjacentNode(gameBoard[xCoordinate + 1][yCoordinate]);
+            node.addAdjacentBox(gameBoard[xCoordinate + 1][yCoordinate]);
         }
 
         // RIGHT
         if (yCoordinate < (columns - 1)) {
-            node.addAdjacentNode(gameBoard[xCoordinate][yCoordinate + 1]);
+            node.addAdjacentBox(gameBoard[xCoordinate][yCoordinate + 1]);
         }
 
         // TOP LEFT DIAGONAL
         if (xCoordinate > 0 && yCoordinate > 0) {
-            node.addAdjacentNode(gameBoard[xCoordinate - 1][yCoordinate - 1]);
+            node.addAdjacentBox(gameBoard[xCoordinate - 1][yCoordinate - 1]);
         }
 
         // TOP RIGHT DIAGONAL
         if (xCoordinate > 0 && yCoordinate < (columns - 1)) {
-            node.addAdjacentNode(gameBoard[xCoordinate - 1][yCoordinate + 1]);
+            node.addAdjacentBox(gameBoard[xCoordinate - 1][yCoordinate + 1]);
         }
 
         // BOTTOM RIGHT DIAGONAL
         if (xCoordinate < (rows - 1) && yCoordinate < (columns - 1)) {
-            node.addAdjacentNode(gameBoard[xCoordinate + 1][yCoordinate + 1]);
+            node.addAdjacentBox(gameBoard[xCoordinate + 1][yCoordinate + 1]);
         }
 
         // BOTTOM LEFT DIAGONAL
         if (xCoordinate < (rows - 1) && yCoordinate > 0) {
-            node.addAdjacentNode(gameBoard[xCoordinate + 1][yCoordinate - 1]);
+            node.addAdjacentBox(gameBoard[xCoordinate + 1][yCoordinate - 1]);
         }
 
         gameBoard[xCoordinate][yCoordinate] = node;
@@ -136,15 +135,14 @@ public class Minesweeper implements IGraph<Box>, IMinesweeperGame {
             int yCoordinate = selected.getYCoordinate();
             gameBoard[xCoordinate][yCoordinate].visitBox();
 
-            List<INode<String>> adjacent = selected.getAdjacentNodes();
+            List<Box> adjacent = selected.getAdjacentBoxes();
 
-            for (INode<String> node : adjacent) {
+            for (Box adjacentBox : adjacent) {
 
-                Box adjacentBox = (Box) node;
                 int adjacentXCoordinate = adjacentBox.getXCoordinate();
                 int adjacentYCoordinate = adjacentBox.getYCoordinate();
 
-                if (!gameBoard[adjacentXCoordinate][adjacentYCoordinate].isVisited() && !gameBoard[adjacentXCoordinate][adjacentYCoordinate].isMine() && !gameBoard[adjacentXCoordinate][adjacentYCoordinate].isFlag()) {
+                if (validateBSFCondition(adjacentXCoordinate, adjacentYCoordinate)) {
                     gameBoard[adjacentXCoordinate][adjacentYCoordinate].visitBox();
                     if (gameBoard[adjacentXCoordinate][adjacentYCoordinate].getMinesAround() == 0) {
                         ((LinkedList<Box>) queue).push(adjacentBox);
@@ -176,7 +174,7 @@ public class Minesweeper implements IGraph<Box>, IMinesweeperGame {
             if (!selectedBox.isVisited()) {
                 gameBoard[row][column].visitBox();
                 if (selectedBox.isMine()) {
-                    this.lost = true;
+                    setLost(true);
                 } else {
                     BreadthFirstSearch(selectedBox);
                 }
@@ -262,6 +260,11 @@ public class Minesweeper implements IGraph<Box>, IMinesweeperGame {
         printBoard(gameBoard, true);
     }
 
+
+    private boolean validateBSFCondition(int xCoordinate, int yCoordinate) {
+        return !gameBoard[xCoordinate][yCoordinate].isVisited() && !gameBoard[xCoordinate][yCoordinate].isMine() && !gameBoard[xCoordinate][yCoordinate].isFlag();
+    }
+
     /**
      * Method that print a board passes as parameter.
      *
@@ -293,6 +296,15 @@ public class Minesweeper implements IGraph<Box>, IMinesweeperGame {
      */
     public boolean getLost() {
         return lost;
+    }
+
+    /**
+     * Method that sets if the player lost the game.
+     *
+     * @param lost- if the player lost the game.
+     */
+    public void setLost(boolean lost) {
+        this.lost = lost;
     }
 
     /**
@@ -360,11 +372,10 @@ public class Minesweeper implements IGraph<Box>, IMinesweeperGame {
      */
     private int numberOfMinesAround(int i, int j) {
         Box selectedBox = gameBoard[i][j];
-        List<INode<String>> adjacent = selectedBox.getAdjacentNodes();
+        List<Box> adjacentBoxes = selectedBox.getAdjacentBoxes();
         int minesAround = 0;
-        for (INode<String> node : adjacent) {
-            Box box = (Box) node;
-            if (box.isMine()) {
+        for (Box adjacentBox : adjacentBoxes) {
+            if (adjacentBox.isMine()) {
                 minesAround++;
             }
         }

@@ -8,12 +8,10 @@
 
 package model;
 
-import interfaces.INode;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class Box implements INode<String> {
+public class Box {
 
     // CONSTANTS
 
@@ -62,7 +60,7 @@ public class Box implements INode<String> {
     /**
      * List with all the adjacent boxes (in every direction).
      */
-    private List<INode<String>> adjacentBoxes;
+    private List<Box> adjacentBoxes;
 
     /**
      * Represent the type of the box.
@@ -116,7 +114,6 @@ public class Box implements INode<String> {
      *
      * @return boolean - the visited attribute of the box.
      */
-    @Override
     public boolean isVisited() {
         return visited;
     }
@@ -126,7 +123,6 @@ public class Box implements INode<String> {
      *
      * @return String - the value of the box.
      */
-    @Override
     public String getValue() {
         if (!isVisited()) {
             if (isMine() && !isFlag()) {
@@ -148,8 +144,8 @@ public class Box implements INode<String> {
      *
      * @return List - the list with all the adjacent boxes.
      */
-    @Override
-    public List<INode<String>> getAdjacentNodes() {
+
+    public List<Box> getAdjacentBoxes() {
         return adjacentBoxes;
     }
 
@@ -158,8 +154,7 @@ public class Box implements INode<String> {
      *
      * @param adjacent - the adjacent box.
      */
-    @Override
-    public void addAdjacentNode(INode<String> adjacent) {
+    public void addAdjacentBox(Box adjacent) {
         this.adjacentBoxes.add(adjacent);
     }
 
