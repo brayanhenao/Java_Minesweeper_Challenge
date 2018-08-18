@@ -16,9 +16,25 @@ Then you would see something like this:
  2) The number of columns in the board.  
  3) The number of mines in the board.
  
- There is an example of the input, for a 8 x 8 board with 5 mines:
- ![](https://i.imgur.com/WikCH6V.png)
+There is an example of the input, for a 8 x 8 board with 5 mines:
+![](https://i.imgur.com/WikCH6V.png)
  
-Start playing minesweeper and have fun!
+## How to compile from source?
+If you want to compile the project by yoursefl, you need to have Java (8) in your path and follow the next steps:
+ 1) Move to the source directory
+ ```console
+ cd src/
+ ```
+ 2) Use the java compiler to compile the main class (Game). It also compiles all the needed classes.  
+ ```console
+ javac ./model/Game.java
+ ```
+ 3) And then run it.
+ ```console
+ java model.Game
+ ```
+ 
+
+### Start playing minesweeper and have fun!
 
 
