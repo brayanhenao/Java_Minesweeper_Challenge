@@ -38,7 +38,7 @@ public class MinesweeperTest {
     /**
      * An array with  all the x,y coordinates of the mines in the scenario.
      */
-    List<Pair<Integer, Integer>> allMines;
+    private List<Pair<Integer, Integer>> allMines;
 
     /**
      * The number of rows that the tested minesweeper would have.
