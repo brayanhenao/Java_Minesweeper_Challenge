@@ -37,6 +37,6 @@ public interface IGraph<T> {
      *
      * @param origin - the origin node of the traversal.
      */
-    void BreadthFirstSearch(T origin);
+    void breadthFirstSearch(T origin);
 
 }

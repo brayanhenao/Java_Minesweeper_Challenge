@@ -125,7 +125,7 @@ public class Minesweeper implements IGraph<Box>, IMinesweeperGame {
      * {@inheritDoc}
      */
     @Override
-    public void BreadthFirstSearch(Box origin) {
+    public void breadthFirstSearch(Box origin) {
         Queue<Box> queue = new LinkedList<>();
         ((LinkedList<Box>) queue).push(origin);
 
@@ -176,7 +176,7 @@ public class Minesweeper implements IGraph<Box>, IMinesweeperGame {
                 if (selectedBox.isMine()) {
                     setLost(true);
                 } else {
-                    BreadthFirstSearch(selectedBox);
+                    breadthFirstSearch(selectedBox);
                 }
             }
         } else {
