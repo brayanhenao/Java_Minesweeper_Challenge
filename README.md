@@ -11,7 +11,7 @@ java -jar PSL_Mineswipper_Challenge.jar
 Then you would see something like this: 
 ![](https://i.imgur.com/AyAkNtJ.png)
  
- You need to enter the input in the asked order separated by a blank space between them:   
+ You need to enter the input in the asked order, separated by a blank space between them:   
  1) The number of rows in the board.  
  2) The number of columns in the board.  
  3) The number of mines in the board.
