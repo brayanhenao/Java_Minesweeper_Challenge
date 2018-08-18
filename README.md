@@ -1,8 +1,8 @@
-#PSL Internship challenge
+# PSL Internship challenge
 
-###Author: Brayan Andrés Henao (bryanhenao96@gmail.com) - Universidad Icesi
+### Author: Brayan Andrés Henao (bryanhenao96@gmail.com) - Universidad Icesi
 
-##How to play the game?
+## How to play the game?
 I decide to compile the whole source code in a JAR file, so it's easiest to run. For this game, you need to have Java (8) installed and then use the following command:
 
 ```console
