@@ -142,7 +142,7 @@ public class Minesweeper implements IGraph<Box>, IMinesweeperGame {
                 int adjacentXCoordinate = adjacentBox.getXCoordinate();
                 int adjacentYCoordinate = adjacentBox.getYCoordinate();
 
-                if (validateBSFCondition(xCoordinate, yCoordinate)) {
+                if (validateBSFCondition(adjacentXCoordinate, adjacentYCoordinate)) {
                     gameBoard[adjacentXCoordinate][adjacentYCoordinate].visitBox();
                     if (gameBoard[adjacentXCoordinate][adjacentYCoordinate].getMinesAround() == 0) {
                         ((LinkedList<Box>) queue).push(adjacentBox);
