@@ -7,17 +7,17 @@ public interface IMinesweeperGame {
     // ATTRIBUTES
 
     /**
-     * Method that initialize all the attributes needed to start the game.
+     * Method that initializes all the attributes needed to start the game.
      */
     void startGame();
 
     /**
-     * Method that open a box.
+     * Method that opens a box.
      */
     void openBox(int row, int column) throws WrongInputException;
 
     /**
-     * Method that mark a box (flag).
+     * Method that marks a box (flag).
      */
     void markBox(int row, int column) throws WrongInputException;
 

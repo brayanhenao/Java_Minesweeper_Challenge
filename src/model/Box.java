@@ -21,12 +21,12 @@ public class Box {
     public final static char MINE_CHAR = '*';
 
     /**
-     * Constant used to represent that the box disabled type.
+     * Constant used to represent that the box is a disabled type.
      */
     public final static char DISABLE_CELL_CHAR = '-';
 
     /**
-     * Constant used to represent that the box is unselected type.
+     * Constant used to represent that the box is a unselected type.
      */
     public final static char UNSELECTED_CELL_CHAR = '.';
 

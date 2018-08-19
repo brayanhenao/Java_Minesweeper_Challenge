@@ -272,7 +272,7 @@ public class Minesweeper implements IGraph<Box>, IMinesweeperGame {
     }
 
     /**
-     * Method that print a board passes as parameter.
+     * Method that print a board passed as parameter.
      *
      * @param board  - the board to be printed.
      * @param solved - if the board to be printed is solved (to reveal mines).
@@ -314,7 +314,7 @@ public class Minesweeper implements IGraph<Box>, IMinesweeperGame {
     }
 
     /**
-     * Method that initialize all the board (crating every box).
+     * Method that initialize all the board (creating every box).
      */
     private void initializeBoard() {
         for (int i = 0; i < rows; i++) {

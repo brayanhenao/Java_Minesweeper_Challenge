@@ -41,17 +41,17 @@ public class MinesweeperTest {
     private List<Pair<Integer, Integer>> allMines;
 
     /**
-     * The number of rows that the tested minesweeper would have.
+     * The number of rows that the tested minesweeper will have.
      */
     private int rows;
 
     /**
-     * The number of columns that the tested minesweeper would have.
+     * The number of columns that the tested minesweeper will have.
      */
     private int columns;
 
     /**
-     * The number of mines that the tested minesweeper would have.
+     * The number of mines that the tested minesweeper will have.
      */
     private int mines;
 
@@ -97,7 +97,7 @@ public class MinesweeperTest {
     // METHODS
 
     /**
-     * This method mark (flag) some random bos that isn't mine or flagged.
+     * This method marks (flag) some random box that aren't mine or flagged.
      */
     private void markRandomBox() {
         boolean finish = false;
@@ -114,7 +114,7 @@ public class MinesweeperTest {
     // TESTS
 
     /**
-     * Test that the game is lost.
+     * Test if has been lost.
      */
     @Test
     public void loseGame() {
@@ -133,7 +133,7 @@ public class MinesweeperTest {
     }
 
     /**
-     * Test that the game is won.
+     * Test if the game has been won.
      */
     @Test
     public void wonGame() {

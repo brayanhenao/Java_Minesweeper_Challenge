@@ -46,7 +46,7 @@ public class Game {
     private String line;
 
     /**
-     * Represents if the gama is already finished.
+     * Represents if the game is already finished.
      */
     private boolean gameFinish;
 
@@ -61,7 +61,7 @@ public class Game {
     // METHODS
 
     /**
-     * Method that starts the program, crating the game board by reading the user input information.
+     * Method that starts the program, creating the game board by reading the user input information.
      */
     private void startPlaying() {
         int rows, columns, mines;
@@ -95,7 +95,7 @@ public class Game {
     }
 
     /**
-     * Method that start the console interaction with the user(movements such mark and uncover a box).
+     * Method that start the console interaction with the user(movements such as mark and uncover a box).
      *
      * @throws IOException
      */
