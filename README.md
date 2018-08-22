@@ -34,6 +34,7 @@ If you want to compile the project by yourself, you need to have Java (8) in you
  java model.Game
  ```
  
+##### Clarification: The game is indexed in 1. (1,1) means that the box located in the first row and column of the board.
 
 ### Start playing minesweeper and have fun!
 
